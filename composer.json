@@ -17,17 +17,26 @@
     "require": {
         "composer/installers": "^1.9",
         "drupal/core-composer-scaffold": "^9.4",
-        "drupal/core-recommended": "^9.4"
+        "drupal/core-recommended": "^9.4",
+        "drupal/webform": "^6.1",
+        "wikimedia/composer-merge-plugin": "^2.0"
+    },
+    "require-dev": {
+        "drupal/core-dev": "^9.4",
+        "drupal/devel": "^5.0",
+        "drupal/memcache": "^2.5",
+        "drush/drush": "^11.2"
     },
     "conflict": {
         "drupal/drupal": "*"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
         "allow-plugins": {
             "composer/installers": true,
             "drupal/core-composer-scaffold": true,
+            "wikimedia/composer-merge-plugin": true,
             "dealerdirect/phpcodesniffer-composer-installer": true
         },
         "sort-packages": true
@@ -36,7 +45,12 @@
         "drupal-scaffold": {
             "locations": {
                 "web-root": "web/"
-            }
+            },
+            "file-mapping": {
+                "[web-root]/robots.txt": false,
+                "[web-root]/.htaccess": false,
+                "[web-root]/sites/development.services.yml": false
+              }
         },
         "installer-paths": {
             "web/core": [
@@ -87,11 +101,11 @@
                 "  * Remove the plugin that prints this message:",
                 "      composer remove drupal/core-project-message"
             ]
+        },
+        "merge-plugin": {
+            "include": [
+                "docroot/modules/contrib/webform/composer.libraries.json"
+            ]
         }
-    },
-    "require-dev": {
-        "drupal/devel": "^5.0",
-        "drupal/memcache": "^2.5",
-        "drush/drush": "^11.2"
     }
 }
