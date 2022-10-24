@@ -12,10 +12,24 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "custom/hello",
+                "version": "dev-master",
+                "type":"drupal-custom-module",
+                "source": {
+                    "url": "git@github.com:AlexanderAllen/hello.git",
+                    "type": "git",
+                    "reference": "main"
+                }
+            }
         }
     ],
     "require": {
         "composer/installers": "^1.9",
+        "custom/hello": "dev-master",
         "drupal/core-composer-scaffold": "^9.4",
         "drupal/core-recommended": "^9.4",
         "drupal/webform": "^6.1",
